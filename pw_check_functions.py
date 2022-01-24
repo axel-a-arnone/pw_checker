@@ -46,3 +46,17 @@ def symbols(password):
         if char in symbols_dict.values():
             symbols_check = True
     return symbols_check
+
+
+def all_checks(password):
+    if not min_length(password):
+        return False
+    if not lower(password):
+        return False
+    if not upper(password):
+        return False
+    if not digits(password):
+        return False
+    if not symbols(password):
+        return False
+    return True

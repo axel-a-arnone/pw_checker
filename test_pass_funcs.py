@@ -50,3 +50,8 @@ def test_symbols_false(test_pw='nosymbols'):
 def test_symbols_true(test_pw='alsosymbols?'):
     check = pw.symbols(test_pw)
     assert check
+
+
+def test_all_checks_true(test_pw='1?aBcDeFgH'):
+    check = pw.all_checks(test_pw)
+    assert check
