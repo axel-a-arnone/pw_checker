@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import pw_check_functions as pw
-
 welcome_message = """Welcome to the password generator.
 Your task is to input a password that complies with the following:
     - Min 8 characters long
@@ -28,7 +27,6 @@ def main():
     print(welcome_message)
     valid_password = False
     while not valid_password:
-        print(password_requirements)
         user_password = input('Please input a password:\n')
         valid_password = pw.all_checks(user_password)
     print(success_message)

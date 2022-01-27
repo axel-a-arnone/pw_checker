@@ -4,7 +4,7 @@ import pw_check_functions as pw
 
 def test_min_length_false(test_pw='short'):
     check = pw.min_length(test_pw)
-    assert not check
+    assert isinstance(check, str)
 
 
 def test_min_length_true(test_pw='longerpassword'):
@@ -14,7 +14,7 @@ def test_min_length_true(test_pw='longerpassword'):
 
 def test_lowercase_false(test_pw='ALLCAPS'):
     check = pw.lower(test_pw)
-    assert not check
+    assert isinstance(check, str)
 
 
 def test_lowercase_true(test_pw='CAPSandlower'):
@@ -24,7 +24,7 @@ def test_lowercase_true(test_pw='CAPSandlower'):
 
 def test_uppercase_false(test_pw='nocaps'):
     check = pw.upper(test_pw)
-    assert not check
+    assert isinstance(check, str)
 
 
 def test_uppercase_true(test_pw='CAPSandlower'):
@@ -34,7 +34,7 @@ def test_uppercase_true(test_pw='CAPSandlower'):
 
 def test_digits_fales(test_pw='NoDiGiTs'):
     check = pw.digits(test_pw)
-    assert not check
+    assert isinstance(check, str)
 
 
 def test_digits_true(test_pw='alsodigits123'):
@@ -44,7 +44,7 @@ def test_digits_true(test_pw='alsodigits123'):
 
 def test_symbols_false(test_pw='nosymbols'):
     check = pw.symbols(test_pw)
-    assert not check
+    assert isinstance(check, str)
 
 
 def test_symbols_true(test_pw='alsosymbols?'):
