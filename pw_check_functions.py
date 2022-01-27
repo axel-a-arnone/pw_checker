@@ -26,6 +26,21 @@ def min_length(password):
 
 
 def lower(password):
+    """
+    Checks if password has at least one lowercase character
+
+    Parameters
+    ----------
+    password : String
+        Password to test.
+
+    Returns
+    -------
+    True or Error string
+        True if: password has at least one lowercase character,
+        else: error string.
+
+    """
     lower_check = cfg.lowercase_msg
     for char in password:
         if char.islower():
@@ -35,6 +50,21 @@ def lower(password):
 
 
 def upper(password):
+    """
+    Checks if password has at least one uppercase character
+
+    Parameters
+    ----------
+    password : String
+        Password to test.
+
+    Returns
+    -------
+    True or Error string
+        True if: password has at least one uppercase character,
+        else: error string.
+
+    """
     upper_check = cfg.uppercase_msg
     for char in password:
         if char.isupper():
@@ -44,6 +74,20 @@ def upper(password):
 
 
 def digits(password):
+    """
+    Checks if password has at least one digit
+
+    Parameters
+    ----------
+    password : String
+        Password to test.
+
+    Returns
+    -------
+    True or Error string
+        True if: password has at least one digit, else: error string.
+
+    """
     digits_check = cfg.digits_msg
     for char in password:
         if char.isdigit():
@@ -81,6 +125,20 @@ def symbols(password):
 
 
 def all_checks(password):
+    """
+    Performs selected password checks
+
+    Parameters
+    ----------
+    password : String
+        Password to test.
+
+    Returns
+    -------
+    check_return : Bool
+        If password fails a test, function will print related requirement
+
+    """
     check_return = True
     check_list = [min_length(password),
                   lower(password),
@@ -92,7 +150,7 @@ def all_checks(password):
     for idx, check in enumerate(selected_checks):
         if not check:
             _ = check_list.pop(idx)
-    # 
+    # Reading check results
     for check in check_list:
         if check is not True:
             check_return = False

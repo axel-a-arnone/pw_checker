@@ -3,42 +3,35 @@
 import pw_check_functions as pw
 import config as cfg
 
-welcome_message = """Welcome to the password generator.
-Your task is to input a password that complies with the following:
-    - Min 8 characters long
-    - Min one lowercase letter
-    - Min one uppercase letter
-    - Min one digit
-    - Min one of the following symbols:
-            ~`!@#$%^&*()_-+={[}]|;<,>.?/
-
-    You will be asked to input a new password until you insert a valid one!"""
-
-password_requirements = """Password requirements:
-    - Min 8 characters long
-    - Min one lowercase letter
-    - Min one uppercase letter
-    - Min one digit
-    - Min one of the following symbols:
-            ~`!@#$%^&*()_-+={[}]|;<,>.?/"""
-
-success_message = "Valid password inserted! Program terminating"
-
 
 def generate_requirements_list():
-    seleceted_checks_msgs = cfg.msg_list
+    """
+    Generates the list of requirements from config file
+
+    Returns
+    -------
+    selected_checks_msgs : List of strings
+        Each element is a password requirement.
+
+    """
+    selected_checks_msgs = cfg.msg_list
     for idx, check in enumerate(cfg.selected_checks):
         if not check:
-            _ = seleceted_checks_msgs.pop(idx)
-    return seleceted_checks_msgs
+            _ = selected_checks_msgs.pop(idx)
+    return selected_checks_msgs
+
 
 def main():
-    print(welcome_message)
+    print(cfg.welcome_message)
+    print('The requirements are:')
+    selected_checks_msgs = generate_requirements_list()
+    for item in selected_checks_msgs:
+        print(item)
     valid_password = False
     while not valid_password:
         user_password = input('Please input a password:\n')
         valid_password = pw.all_checks(user_password)
-    print(success_message)
+    print(cfg.success_message)
 
 
 if __name__ == '__main__':

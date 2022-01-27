@@ -29,3 +29,13 @@ msg_list = [length_msg,
             uppercase_msg,
             digits_msg,
             symbols_msg]
+
+welcome_message = """Welcome to the password creator.
+
+You will be asked to input a password that complies with some requirements.
+If the selected password doesn't comply with one of the requirements, the
+missing requirements will be asked again and you will have to input a new
+password.
+"""
+
+success_message = "Valid password inserted! Program terminating"
