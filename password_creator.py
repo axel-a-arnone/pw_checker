@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import pw_check_functions as pw
+import config as cfg
+
 welcome_message = """Welcome to the password generator.
 Your task is to input a password that complies with the following:
     - Min 8 characters long
@@ -22,6 +24,13 @@ password_requirements = """Password requirements:
 
 success_message = "Valid password inserted! Program terminating"
 
+
+def generate_requirements_list():
+    seleceted_checks_msgs = cfg.msg_list
+    for idx, check in enumerate(cfg.selected_checks):
+        if not check:
+            _ = seleceted_checks_msgs.pop(idx)
+    return seleceted_checks_msgs
 
 def main():
     print(welcome_message)

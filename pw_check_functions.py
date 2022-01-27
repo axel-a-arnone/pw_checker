@@ -1,17 +1,32 @@
 # -*- coding: utf-8 -*-
+import config as cfg
 
 
 def min_length(password):
-    min_length = 8
-    min_length_error = 'The password is too short'
+    """
+    Checks if password has minimum length, defined in config file
+
+    Parameters
+    ----------
+    password : String
+        Password to test.
+
+    Returns
+    -------
+    True or Error string
+        True if: password is long enough, else: error string.
+
+    """
+    min_length = cfg.minimum_length
+    min_length_msg = cfg.length_msg
     if len(password) >= min_length:
         return True
     else:
-        return min_length_error
+        return min_length_msg
 
 
 def lower(password):
-    lower_check = 'The password does not have any lowercase character'
+    lower_check = cfg.lowercase_msg
     for char in password:
         if char.islower():
             lower_check = True
@@ -20,7 +35,7 @@ def lower(password):
 
 
 def upper(password):
-    upper_check = 'The password does not have any uppercase character'
+    upper_check = cfg.uppercase_msg
     for char in password:
         if char.isupper():
             upper_check = True
@@ -29,7 +44,7 @@ def upper(password):
 
 
 def digits(password):
-    digits_check = 'The password does not have any digits'
+    digits_check = cfg.digits_msg
     for char in password:
         if char.isdigit():
             digits_check = True
@@ -38,13 +53,27 @@ def digits(password):
 
 
 def symbols(password):
+    """
+    Checks if password has at least one special symbol, defined in config file
+
+    Parameters
+    ----------
+    password : String
+        Password to test.
+
+    Returns
+    -------
+    True or Error string
+        True if: password has at least one special symbol, else: error string.
+
+    """
     # Setting symbols string and dict
-    symbols_string = '~`!@#$%^&*()_-+={[}]|;<,>.?/'
+    symbols_string = cfg.required_symbols
     symbols_dict = {}
     for symbol in enumerate(symbols_string):
         symbols_dict[symbol[0]] = symbol[1]
     # Checking for symbol in password
-    symbols_check = 'The password does not have any of the selected symbols'
+    symbols_check = cfg.symbols_msg
     for char in password:
         if char in symbols_dict.values():
             symbols_check = True
@@ -58,6 +87,12 @@ def all_checks(password):
                   upper(password),
                   digits(password),
                   symbols(password)]
+    # Removing unwanted checks
+    selected_checks = cfg.selected_checks
+    for idx, check in enumerate(selected_checks):
+        if not check:
+            _ = check_list.pop(idx)
+    # 
     for check in check_list:
         if check is not True:
             check_return = False
