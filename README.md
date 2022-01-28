@@ -41,4 +41,8 @@ If you have any suggestions on how to improve the code, or what features I could
 
 ## License
 
+<<<<<<< HEAD
 **Free Software, Hell Yeah!**
+=======
+**Free Software, Hell Yeah!**
+>>>>>>> 4d3559349f3678a6aba0106f6bd0dbf592710ced
