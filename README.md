@@ -1,5 +1,44 @@
-Hello and welcome to the password creation checker.
-The scope of the program is to guide the user to generate a password that complies with predetermined conditions, such as minimum length, presence of lowercase and uppercase characters and so on...
-To start the program, download all the files in a folde an run "password_creato.py"
-The program will welcome you and prompt you to input a password.
-You will be asked to input a new password until the inserted password is valid.
+# Password checker
+## _A tester for your passwords_
+
+![GitHub language count](https://img.shields.io/github/languages/count/axel-a-arnone/pw_checker)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/axel-a-arnone/pw_checker)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/axel-a-arnone/pw_checker)
+
+Password Checker is a program that guides you through a password creation process, and allows you to select the password requirements.
+
+## Features
+
+- Checking the strength of the selected password
+- Estimating the number of tries necessary to guess it
+- Automatically generate a compliant password
+
+
+## Installation
+
+Download the full repository and save it in a folder.
+
+---
+
+## Usage and configuration
+
+To try the program, run password_creator.py
+
+Currently, the only password requirement is to have at least 4 characters.
+Changing the booleans in the CHECKS section of the config file will turn on checks for other conditions, such as presence of lowercase letters, uppercase letters, digits and special symbols.
+![](/images/config_img.svg)
+
+---
+
+## Development
+
+Want to contribute? Great!
+
+This program started as a project for my programming course, but I'd be happy to expand it.
+If you have any suggestions on how to improve the code, or what features I could add, please contact me!
+
+
+## License
+
+**Free Software, Hell Yeah!**
+
