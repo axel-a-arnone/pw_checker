@@ -26,7 +26,7 @@ To try the program, run password_creator.py
 
 Currently, the only password requirement is to have at least 4 characters.
 Changing the booleans in the CHECKS section of the config file will turn on checks for other conditions, such as presence of lowercase letters, uppercase letters, digits and special symbols.
-![](/images/config_img.svg)
+![](/images/config_img.png)
 
 ---
 
