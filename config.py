@@ -1,13 +1,13 @@
 length_check = True
-minimum_length = 8
+minimum_length = 4
 
-lowercase_check = True
+lowercase_check = False
 
-uppercase_check = True
+uppercase_check = False
 
-digits_check = True
+digits_check = False
 
-symbols_check = True
+symbols_check = False
 required_symbols = '~`!@#$%^&*()_-+={[}]|;<,>.?/'
 
 std_msg = 'Password should contain at least '
@@ -62,3 +62,9 @@ all_chartypes = [all_lowercase,
                  all_uppercase,
                  all_digits,
                  all_symbols]
+
+
+hacked_password_file_name = 'HackedPasswords.txt'
+hacked_passwords_list = open(hacked_password_file_name, 'r').readlines()
+hacked_passwords_list = list(map(str.strip, hacked_passwords_list))
+hacked_msg = """This password appears in database of hacked passwords"""

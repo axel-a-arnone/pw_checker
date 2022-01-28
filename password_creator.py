@@ -4,6 +4,7 @@ import pw_check_functions as pw
 import config as cfg
 import random
 
+
 def generate_requirements_list():
     """
     Generates the list of requirements from config file
@@ -14,10 +15,11 @@ def generate_requirements_list():
         Each element is a password requirement.
 
     """
-    selected_checks_msgs = cfg.msg_list
+    checks_msgs_base = cfg.msg_list
+    selected_checks_msgs = []
     for idx, check in enumerate(cfg.selected_checks):
-        if not check:
-            _ = selected_checks_msgs.pop(idx)
+        if check:
+            selected_checks_msgs.append(checks_msgs_base[idx])
     return selected_checks_msgs
 
 
@@ -63,6 +65,9 @@ def main():
         print(cfg.valid_password_message)
         pw_strength, est_guesses = pw.calculate_entropy(user_password)
         print('The password you inserted is', pw_strength)
+        password_hacked = pw.hacked_password(user_password)
+        if password_hacked:
+            print(cfg.hacked_msg)
         print('Would you like to confirm your password?')
         answer = ''
         while answer not in ('yes', 'no'):

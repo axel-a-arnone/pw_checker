@@ -2,6 +2,7 @@
 import config as cfg
 import math
 
+
 def min_length(password):
     """
     Checks if password has minimum length, defined in config file
@@ -140,16 +141,17 @@ def all_checks(password):
 
     """
     check_return = True
-    check_list = [min_length(password),
-                  lower(password),
-                  upper(password),
-                  digits(password),
-                  symbols(password)]
+    check_list_base = [min_length(password),
+                       lower(password),
+                       upper(password),
+                       digits(password),
+                       symbols(password)]
+    check_list = []
     # Removing unwanted checks
     selected_checks = cfg.selected_checks
     for idx, check in enumerate(selected_checks):
-        if not check:
-            _ = check_list.pop(idx)
+        if check:
+            check_list.append(check_list_base[idx])
     # Reading check results
     for check in check_list:
         if check is not True:
@@ -203,3 +205,24 @@ def calculate_entropy(password):
             pw_strength = pw_strength_levels[idx]
             break
     return pw_strength, expected_number_of_guesses
+
+
+def hacked_password(password):
+    """
+    Verifies if password is in database of hacked passwords
+
+    Parameters
+    ----------
+    password : string
+        password being tested.
+
+    Returns
+    -------
+    hacked: Bool
+        Boolean stating if selected password has already been hacked or not
+
+    """
+    hacked = False
+    if password in cfg.hacked_passwords_list:
+        hacked = True
+    return hacked
