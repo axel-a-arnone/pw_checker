@@ -7,7 +7,7 @@ symbols_check = False
 
 # PARAMETERS
 minimum_length = 4
-
+required_symbols = '~`!@#$%^&*()_-+={[}]|;<,>.?/'
 
 std_msg = 'Password should contain at least '
 
@@ -54,7 +54,7 @@ all_uppercase = ['A', 'B', 'C', 'D', 'E',
 all_digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
 all_symbols = []
-required_symbols = '~`!@#$%^&*()_-+={[}]|;<,>.?/'
+
 for symbol in required_symbols:
     all_symbols.append(symbol)
 
