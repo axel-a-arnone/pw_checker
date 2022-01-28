@@ -22,6 +22,16 @@ def generate_requirements_list():
 
 
 def password_generator():
+    """
+    Generates password based on the settings of the configuration files
+
+    Returns
+    -------
+    gen_password : string
+        Random generated password, with at least one element from each
+        character type.
+
+    """
     pass_length = 12
     if cfg.length_check:
         min_len = cfg.minimum_length
@@ -45,10 +55,26 @@ def main():
     for item in selected_checks_msgs:
         print(item)
     valid_password = False
-    while not valid_password:
-        user_password = input('Please input a password:\n')
-        valid_password = pw.all_checks(user_password)
-    print(cfg.success_message)
+    accepted_password = False
+    while not accepted_password:
+        while not valid_password:
+            user_password = input('Please input a password:\n')
+            valid_password = pw.all_checks(user_password)
+        print(cfg.valid_password_message)
+        pw_strength, est_guesses = pw.calculate_entropy(user_password)
+        print('The password you inserted is', pw_strength)
+        print('Would you like to confirm your password?')
+        answer = ''
+        while answer not in ('yes', 'no'):
+            answer = input('Please answer yes or no: ')
+            if answer == 'yes':
+                accepted_password = True
+            elif answer == 'no':
+                accepted_password = False
+                valid_password = False
+            else:
+                pass
+    
 
 
 if __name__ == '__main__':

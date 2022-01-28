@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import config as cfg
-
+import math
 
 def min_length(password):
     """
@@ -156,3 +156,50 @@ def all_checks(password):
             check_return = False
             print(check)
     return check_return
+
+
+def calculate_entropy(password):
+    """
+    Evaluates strength of inserted password
+
+    Parameters
+    ----------
+    password : string
+        Password to be tested.
+
+    Returns
+    -------
+    pw_strength : String
+        Strength of password based on entropy.
+    expected_number_of_guesses : Int
+        Estimated number of guesses.
+
+    """
+    password_length = len(password)
+    char_lists = cfg.all_chartypes
+    char_counters = []
+    for _ in char_lists:
+        char_counters.append(0)
+    for char in password:
+        for idx, cur_list in enumerate(char_lists):
+            if char in cur_list:
+                char_counters[idx] += 1
+                break
+    possible_characters = 0
+    for idx, counter in enumerate(char_counters):
+        if counter != 0:
+            possible_characters += len(char_lists[idx])
+    possible_combinations = possible_characters ** password_length
+    pw_entropy = math.log(possible_combinations, 2)
+    expected_number_of_guesses = 2 ** round(pw_entropy-1)
+    entropy_levels = [28, 35, 59, 127, 256]
+    pw_strength_levels = ['Very weak...',
+                          'Weak',
+                          'Reasonable',
+                          'Strong',
+                          'Insanely strong!']
+    for idx, limit in enumerate(entropy_levels):
+        if pw_entropy < limit:
+            pw_strength = pw_strength_levels[idx]
+            break
+    return pw_strength, expected_number_of_guesses

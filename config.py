@@ -38,7 +38,7 @@ missing requirements will be asked again and you will have to input a new
 password.
 """
 
-success_message = "Valid password inserted! Program terminating"
+valid_password_message = "Valid password inserted!"
 
 all_lowercase = ['a', 'b', 'c', 'd', 'e',
                  'f', 'g', 'h', 'i', 'j',
