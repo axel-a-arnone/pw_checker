@@ -42,4 +42,3 @@ If you have any suggestions on how to improve the code, or what features I could
 ## License
 
 **Free Software, Hell Yeah!**
-
