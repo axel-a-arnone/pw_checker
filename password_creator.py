@@ -60,7 +60,17 @@ def main():
     accepted_password = False
     while not accepted_password:
         while not valid_password:
-            user_password = input('Please input a password:\n')
+            print('Would you like to generate a password randomly?')
+            answer = ''
+            while answer not in ('yes', 'no'):
+                answer = input('Please answer yes or no: ')
+                if answer == 'yes':
+                    user_password = password_generator()
+                    print('The generated password is:', user_password)
+                elif answer == 'no':
+                    user_password = input('Please input a password:\n')
+                else:
+                    pass
             valid_password = pw.all_checks(user_password)
         print(cfg.valid_password_message)
         pw_strength, est_guesses = pw.calculate_entropy(user_password)
