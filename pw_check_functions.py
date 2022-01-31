@@ -58,12 +58,11 @@ def upper(password):
 
     Returns
     -------
-    True or Error string
-        True if: password has at least one uppercase character,
-        else: error string.
+    Boolean
+        Result of the test
 
     """
-    upper_check = cfg.uppercase_msg
+    upper_check = False
     for char in password:
         if char.isupper():
             upper_check = True
