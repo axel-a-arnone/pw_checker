@@ -286,11 +286,26 @@ all_chartypes = [all_lowercase,
 
 
 def password_generator(length_check=False,
-                       minimum_length=1):
+                       minimum_length=4):
+    """
+    generates a random password with all the requirements
 
+    Parameters
+    ----------
+    length_check : Bool, optional
+        Bool to set a minimum length. The default is False.
+    minimum_length : TYPE, optional
+        Minimum length of the password. The default is 4.
+
+    Returns
+    -------
+    gen_password : string
+        Randomly generated password.
+
+    """
     pass_length = 12
     if length_check:
-        min_len = minimum_length
+        min_len = max(minimum_length, 4) #To allow one of each char type
         pass_length = min_len + random.randint(0, min_len)
     gen_lists = all_chartypes
     number_of_types = len(gen_lists)
