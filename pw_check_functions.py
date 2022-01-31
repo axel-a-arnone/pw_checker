@@ -14,8 +14,8 @@ def min_length(password, minimum_length):
 
     Returns
     -------
-    True or Error string
-        True if: password is long enough, else: error string.
+    Bool
+        Result of the test.
 
     """
     if len(password) >= minimum_length:
