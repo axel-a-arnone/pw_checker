@@ -181,6 +181,85 @@ def perform_checks(password,
     return check_return
 
 
+std_msg = 'Password should contain at least '
+
+
+def get_length_message(minimum_length):
+    """
+    Creates length message string given a minimum_length
+
+    Parameters
+    ----------
+    minimum_length : int
+        Required minimum length.
+
+    Returns
+    -------
+    length_msg : str
+        message stating that the password should contain the required minimum
+        ammount of characters.
+
+    """
+    length_msg = (std_msg + str(minimum_length) + ' characters')
+    return length_msg
+
+
+lowercase_msg = (std_msg + 'one lowercase character')
+uppercase_msg = (std_msg + 'one uppercase character')
+digits_msg = (std_msg + 'one digit')
+symbols_msg = (std_msg + 'one of the following symbols:\n' + required_symbols)
+
+
+def print_missing_requirements(password,
+                               length_check=False,
+                               minimum_length=1,
+                               lower_check=False,
+                               upper_check=False,
+                               digits_check=False,
+                               symbols_check=False):
+    """
+    prints message prompting the password requirements
+
+    Parameters
+    ----------
+    password : str
+        password to test.
+    length_check : Bool, optional
+        Bool to perform length check. The default is False.
+    minimum_length : int, optional
+        Minimum length to verify. The default is 1.
+    lower_check : Bool, optional
+        Bool to perform lowercase check. The default is False.
+    upper_check : Bool, optional
+        Bool to perform uppercase check. The default is False.
+    digits_check : Bool, optional
+        Bool to perform digits check. The default is False.
+    symbols_check : Bool, optional
+        Bool to perform symbols check. The default is False.
+
+    Returns
+    -------
+    None.
+
+    """
+    if length_check:
+        if not min_length(password, minimum_length):
+            length_msg = get_length_message(minimum_length)
+            print(length_msg)
+    if lower_check:
+        if not lower(password):
+            print(lowercase_msg)
+    if upper_check:
+        if not upper(password):
+            print(uppercase_msg)
+    if digits_check:
+        if not digits(password):
+            print(digits_msg)
+    if symbols_check:
+        if not symbols(password):
+            print(symbols_msg)
+
+
 def calculate_entropy(password):
     """
     Evaluates strength of inserted password
