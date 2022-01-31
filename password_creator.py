@@ -12,33 +12,6 @@ digits_check = cfg.digits_check
 symbols_check = cfg.symbols_check
 
 
-def password_generator():
-    """
-    Generates password based on the settings of the configuration files
-
-    Returns
-    -------
-    gen_password : string
-        Random generated password, with at least one element from each
-        character type.
-
-    """
-    pass_length = 12
-    if cfg.length_check:
-        min_len = cfg.minimum_length
-        pass_length = min_len + random.randint(0, min_len)
-    gen_lists = cfg.all_chartypes
-    number_of_types = len(gen_lists)
-    gen_password = ''
-    for idx in range(number_of_types):
-        gen_char = random.choice(gen_lists[idx])
-        gen_password += gen_char
-    for idx in range(pass_length-number_of_types):
-        gen_char = random.choice(random.choice(gen_lists))
-        gen_password += gen_char
-    return gen_password
-
-
 def main():
     print(cfg.welcome_message)
     print('The requirements are:')

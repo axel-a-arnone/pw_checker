@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import config as cfg
 import math
-
+import random
 
 def min_length(password, minimum_length):
     """
@@ -258,6 +258,52 @@ def print_missing_requirements(password,
     if symbols_check:
         if not symbols(password):
             print(symbols_msg)
+
+
+all_lowercase = ['a', 'b', 'c', 'd', 'e',
+                 'f', 'g', 'h', 'i', 'j',
+                 'k', 'l', 'm', 'n', 'o',
+                 'p', 'q', 'r', 's', 't',
+                 'u', 'v', 'w', 'x', 'y', 'z']
+
+all_uppercase = ['A', 'B', 'C', 'D', 'E',
+                 'F', 'G', 'H', 'I', 'J',
+                 'K', 'L', 'M', 'N', 'O',
+                 'P', 'Q', 'R', 'S', 'T',
+                 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+all_digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+
+all_symbols = []
+
+for symbol in required_symbols:
+    all_symbols.append(symbol)
+
+all_chartypes = [all_lowercase,
+                 all_uppercase,
+                 all_digits,
+                 all_symbols]
+
+
+def password_generator(length_check=False,
+                       minimum_length=1):
+
+    pass_length = 12
+    if length_check:
+        min_len = minimum_length
+        pass_length = min_len + random.randint(0, min_len)
+    gen_lists = all_chartypes
+    number_of_types = len(gen_lists)
+    gen_password = ''
+    for idx in range(number_of_types):
+        gen_char = random.choice(gen_lists[idx])
+        gen_password += gen_char
+    for idx in range(pass_length-number_of_types):
+        gen_char = random.choice(random.choice(gen_lists))
+        gen_password += gen_char
+    # Shuffle password
+    gen_password = ''.join(random.sample(gen_password, len(gen_password)))
+    return gen_password
 
 
 def calculate_entropy(password):
