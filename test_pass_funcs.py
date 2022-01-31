@@ -5,6 +5,8 @@ import pw_check_functions as pw
 four_char_pass = 'sH0?'
 eight_char_password = 'l0N?eR7!'
 twelve_char_password = 'tH&L0nGesTp2'
+no_lowercase = 'AL7HE0T82'
+only_lowercase = 'theseareonlylowercase'
 
 
 def test_min_length_shorter(test_pw=four_char_pass, min_length=8):
@@ -67,15 +69,59 @@ def test_min_length_longer(test_pw=twelve_char_password, min_lenght=8):
     assert check
 
 
-def test_lowercase_false(test_pw='ALLCAPS'):
+def test_lowercase_false(test_pw=no_lowercase):
+    """
+    tests if a password with no lowercase character fails the check
+
+    Parameters
+    ----------
+    test_pw : string, optional
+        Password to be checked. The default is no_lowercase.
+
+    Returns
+    -------
+    None.
+
+    """
     check = pw.lower(test_pw)
-    assert isinstance(check, str)
+    assert not check
 
 
-def test_lowercase_true(test_pw='CAPSandlower'):
+def test_lowercase_only_lc(test_pw=only_lowercase):
+    """
+    tests if a password that only contains lowercase characters passes the 
+    test
+
+    Parameters
+    ----------
+    test_pw : string, optional
+        password to check. The default is only_lowercase.
+
+    Returns
+    -------
+    None.
+
+    """
     check = pw.lower(test_pw)
     assert check
 
+
+def test_lowercase_true(test_pw=eight_char_password):
+    """
+    tests if a password containing lowercase characters passes the test
+
+    Parameters
+    ----------
+    test_pw : string, optional
+        password to check. The default is eight_char_password.
+
+    Returns
+    -------
+    None.
+
+    """
+    check = pw.lower(test_pw)
+    assert check
 
 def test_uppercase_false(test_pw='nocaps'):
     check = pw.upper(test_pw)

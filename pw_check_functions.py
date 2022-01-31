@@ -35,12 +35,11 @@ def lower(password):
 
     Returns
     -------
-    True or Error string
-        True if: password has at least one lowercase character,
-        else: error string.
+    Boolean
+        Result of the test
 
     """
-    lower_check = cfg.lowercase_msg
+    lower_check = False
     for char in password:
         if char.islower():
             lower_check = True
