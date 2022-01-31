@@ -81,11 +81,11 @@ def digits(password):
 
     Returns
     -------
-    True or Error string
-        True if: password has at least one digit, else: error string.
+    Boolean
+        result of the test
 
     """
-    digits_check = cfg.digits_msg
+    digits_check = False
     for char in password:
         if char.isdigit():
             digits_check = True
