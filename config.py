@@ -7,7 +7,6 @@ symbols_check = False
 
 # PARAMETERS
 minimum_length = 4
-required_symbols = '~`!@#$%^&*()_-+={[}]|;<,>.?/'
 
 selected_checks = [length_check,
                    lowercase_check,
@@ -24,30 +23,6 @@ password.
 """
 
 valid_password_message = "Valid password inserted!"
-
-all_lowercase = ['a', 'b', 'c', 'd', 'e',
-                 'f', 'g', 'h', 'i', 'j',
-                 'k', 'l', 'm', 'n', 'o',
-                 'p', 'q', 'r', 's', 't',
-                 'u', 'v', 'w', 'x', 'y', 'z']
-
-all_uppercase = ['A', 'B', 'C', 'D', 'E',
-                 'F', 'G', 'H', 'I', 'J',
-                 'K', 'L', 'M', 'N', 'O',
-                 'P', 'Q', 'R', 'S', 'T',
-                 'U', 'V', 'W', 'X', 'Y', 'Z']
-
-all_digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-
-all_symbols = []
-
-for symbol in required_symbols:
-    all_symbols.append(symbol)
-
-all_chartypes = [all_lowercase,
-                 all_uppercase,
-                 all_digits,
-                 all_symbols]
 
 
 hacked_password_file_name = 'HackedPasswords.txt'
