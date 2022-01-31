@@ -11,6 +11,8 @@ no_uppercase = 'n0?ed34r$'
 only_uppercase = 'ONLYUPPERCASEPASS'
 no_digits = 'noDIGts?!$'
 only_digits = '42157834420'
+no_symbols = 'wE0nlYDo534'
+only_symbols = '+]$?)(%^@'
 
 
 def test_min_length_shorter(test_pw=four_char_pass, min_length=8):
@@ -236,12 +238,56 @@ def test_digits_true(test_pw=eight_char_password):
     assert check
 
 
-def test_symbols_false(test_pw='nosymbols'):
+def test_symbols_false(test_pw=no_symbols):
+    """
+    tests if a password with no symbols fails the check
+
+    Parameters
+    ----------
+    test_pw : string, optional
+        password to check. The default is no_symbols.
+
+    Returns
+    -------
+    None.
+
+    """
     check = pw.symbols(test_pw)
-    assert isinstance(check, str)
+    assert not check
 
 
-def test_symbols_true(test_pw='alsosymbols?'):
+def test_symbols_only_symbols(test_pw=only_symbols):
+    """
+    tests if a password with only symbols passes the check
+
+    Parameters
+    ----------
+    test_pw : string, optional
+        password to check. The default is only_symbols.
+
+    Returns
+    -------
+    None.
+
+    """
+    check = pw.symbols(test_pw)
+    assert check
+
+
+def test_symbols_true(test_pw=eight_char_password):
+    """
+    tests if a password containing symbols passes the check
+
+    Parameters
+    ----------
+    test_pw : string, optional
+        password to check. The default is eight_char_password.
+
+    Returns
+    -------
+    None.
+
+    """
     check = pw.symbols(test_pw)
     assert check
 

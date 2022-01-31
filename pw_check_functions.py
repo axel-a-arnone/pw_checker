@@ -92,6 +92,7 @@ def digits(password):
             break
     return digits_check
 
+required_symbols = '~`!@#$%^&*()_-+={[}]|;<,>.?/'
 
 def symbols(password):
     """
@@ -109,12 +110,12 @@ def symbols(password):
 
     """
     # Setting symbols string and dict
-    symbols_string = cfg.required_symbols
+    symbols_string = required_symbols
     symbols_dict = {}
     for symbol in enumerate(symbols_string):
         symbols_dict[symbol[0]] = symbol[1]
     # Checking for symbol in password
-    symbols_check = cfg.symbols_msg
+    symbols_check = False
     for char in password:
         if char in symbols_dict.values():
             symbols_check = True
