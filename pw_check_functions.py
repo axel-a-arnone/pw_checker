@@ -124,38 +124,60 @@ def symbols(password):
     return symbols_check
 
 
-def all_checks(password):
+def perform_checks(password,
+                   length_check=False,
+                   minimum_length=1,
+                   lower_check=False,
+                   upper_check=False,
+                   digits_check=False,
+                   symbols_check=False):
     """
-    Performs selected password checks
+    performs requested checks 
 
     Parameters
     ----------
-    password : String
-        Password to test.
+    password : string
+        password to test.
+    length_check : Bool, optional
+        Bool to perform length check. The default is False.
+    minimum_length : int, optional
+        Minimum length to verify. The default is 1.
+    lower_check : Bool, optional
+        Bool to perform lowercase check. The default is False.
+    upper_check : Bool, optional
+        Bool to perform uppercase check. The default is False.
+    digits_check : Bool, optional
+        Bool to perform digits check. The default is False.
+    symbols_check : Bool, optional
+        Bool to perform symbols check. The default is False.
 
     Returns
     -------
-    check_return : Bool
-        If password fails a test, function will print related requirement
+    check_return
+        True if all tests are true, False if the password fails at least one
+        test.
 
     """
+
+    check_list = [True]
+    if length_check:
+        check_list.append(min_length(password, minimum_length))
+    if lower_check:
+        check_list.append(lower(password))
+    if upper_check:
+        check_list.append(upper(password))
+    if digits_check:
+        check_list.append(digits(password))
+    if symbols_check:
+        check_list.append(symbols(password))
+
     check_return = True
-    check_list_base = [min_length(password),
-                       lower(password),
-                       upper(password),
-                       digits(password),
-                       symbols(password)]
-    check_list = []
-    # Removing unwanted checks
-    selected_checks = cfg.selected_checks
-    for idx, check in enumerate(selected_checks):
-        if check:
-            check_list.append(check_list_base[idx])
-    # Reading check results
+
     for check in check_list:
-        if check is not True:
+        if not check:
             check_return = False
-            print(check)
+            break
+    
     return check_return
 
 

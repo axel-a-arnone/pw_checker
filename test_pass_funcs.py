@@ -339,6 +339,147 @@ def test_pw_in_set_false(test_pw=twelve_char_password,
     assert not check
 
 
-def test_all_checks_true(test_pw='1?aBcDeFgH'):
-    check = pw.all_checks(test_pw)
+def test_perform_all_checks_true(test_pw=eight_char_password):
+    """
+    tests if a password with all the requirements passes all the test
+
+    Parameters
+    ----------
+    test_pw : str, optional
+        password to test. The default is eight_char_password.
+
+    Returns
+    -------
+    None.
+
+    """
+    check = pw.perform_checks(test_pw,
+                              length_check=True,
+                              minimum_length=1,
+                              lower_check=True,
+                              upper_check=True,
+                              digits_check=True,
+                              symbols_check=True)
     assert check
+
+
+def test_perform_all_checks_length_fail(test_pw=four_char_pass):
+    """
+    tests if a password that is too short fails the test
+
+    Parameters
+    ----------
+    test_pw : str, optional
+        password to test. The default is four_char_pass.
+
+    Returns
+    -------
+    None.
+
+    """
+    check = pw.perform_checks(test_pw,
+                              length_check=True,
+                              minimum_length=8,
+                              lower_check=True,
+                              upper_check=True,
+                              digits_check=True,
+                              symbols_check=True)
+    assert not check
+
+
+def test_perform_all_checks_lower_fail(test_pw=no_lowercase):
+    """
+    tests if a password with no lowercase characters fails the test
+
+    Parameters
+    ----------
+    test_pw : str, optional
+        password to test. The default is no_lowercase.
+
+    Returns
+    -------
+    None.
+
+    """
+    check = pw.perform_checks(test_pw,
+                              length_check=True,
+                              minimum_length=6,
+                              lower_check=True,
+                              upper_check=True,
+                              digits_check=True,
+                              symbols_check=True)
+    assert not check
+
+
+def test_perform_all_checks_upper_fail(test_pw=no_uppercase):
+    """
+    tests if a password with no uppercase characters fails the test
+
+    Parameters
+    ----------
+    test_pw : str, optional
+        password to test. The default is no_uppercase.
+
+    Returns
+    -------
+    None.
+
+    """
+    check = pw.perform_checks(test_pw,
+                              length_check=True,
+                              minimum_length=6,
+                              lower_check=True,
+                              upper_check=True,
+                              digits_check=True,
+                              symbols_check=True)
+    assert not check
+
+
+def test_perform_all_checks_digits_fail(test_pw=no_digits):
+    """
+    tests if a password with no digits fails the test
+
+    Parameters
+    ----------
+    test_pw : str, optional
+        password to test. The default is no_digits.
+
+    Returns
+    -------
+    None.
+
+    """
+    check = pw.perform_checks(test_pw,
+                              length_check=True,
+                              minimum_length=6,
+                              lower_check=True,
+                              upper_check=True,
+                              digits_check=True,
+                              symbols_check=True)
+    assert not check
+
+
+def test_perform_all_checks_symbols_fail(test_pw=no_symbols):
+    """
+    tests if a password with no symbols fails the test
+
+    Parameters
+    ----------
+    test_pw : str, optional
+        password to test. The default is no_symbols.
+
+    Returns
+    -------
+    None.
+
+    """
+    check = pw.perform_checks(test_pw,
+                              length_check=True,
+                              minimum_length=6,
+                              lower_check=True,
+                              upper_check=True,
+                              digits_check=True,
+                              symbols_check=True)
+    assert not check
+
+
