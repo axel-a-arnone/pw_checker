@@ -11,6 +11,7 @@ Password Checker is a program that guides you through a password creation proces
 
 - Checking the strength of the selected password
 - Estimating the number of tries necessary to guess it
+- Checking if the input password appears in a hacked passwords database
 - Automatically generate a compliant password
 
 
@@ -23,11 +24,16 @@ Download the full repository and save it in a folder.
 ## Usage and configuration
 
 To try the program, run password_creator.py
+You will be prompted with the password requirements and the possibility to automatically generate a password
+At the end of the process, the program will check if the password is in the provided hacked passwords database
+
+The password password requirements can be tweaked in the config file:
+
+<img src="https://github.com/axel-a-arnone/pw_checker/blob/main/images/config_img.png" width="400">
 
 Currently, the only password requirement is to have at least 4 characters.
 Changing the booleans in the CHECKS section of the config file will turn on checks for other conditions, such as presence of lowercase letters, uppercase letters, digits and special symbols.
-
-<img src="https://github.com/axel-a-arnone/pw_checker/blob/main/images/config_img.png" width="300">
+If you would like to use a different password database, add another txt file with one password per row and change the pass_db_filename value.
 
 ---
 
