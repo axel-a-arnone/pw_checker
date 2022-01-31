@@ -7,7 +7,7 @@ symbols_check = False
 
 # PARAMETERS
 minimum_length = 4
-
+required_symbols = '~`!@#$%^&*()_-+={[}]|;<,>.?/'
 
 std_msg = 'Password should contain at least '
 

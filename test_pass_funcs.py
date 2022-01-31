@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pw_check_functions as pw
 
-
+# PASSWORDS
 four_char_pass = 'sH0?'
 eight_char_password = 'l0N?eR7!'
 twelve_char_password = 'tH&L0nGesTp2'
@@ -13,6 +13,10 @@ no_digits = 'noDIGts?!$'
 only_digits = '42157834420'
 no_symbols = 'wE0nlYDo534'
 only_symbols = '+]$?)(%^@'
+obvious_pw = '12345678'
+
+# FILENAME
+hacked_pw_filename = 'HackedPasswords.txt'
 
 
 def test_min_length_shorter(test_pw=four_char_pass, min_length=8):
@@ -290,6 +294,49 @@ def test_symbols_true(test_pw=eight_char_password):
     """
     check = pw.symbols(test_pw)
     assert check
+
+
+def test_pw_in_set_true(test_pw=obvious_pw, file_name=hacked_pw_filename):
+    """
+    tests if the password that is actually in the set is found
+
+    Parameters
+    ----------
+    test_pw : string, optional
+        password to look for in set. The default is obvious_pw.
+    file_name : string
+        Name of the txt file in which all the passwords are stored. The
+        default is hacked_pw_filename.
+
+    Returns
+    -------
+    None.
+
+    """
+    check = pw.check_if_in_pw_database(test_pw, file_name)
+    assert check
+
+
+def test_pw_in_set_false(test_pw=twelve_char_password,
+                         filen_name=hacked_pw_filename):
+    """
+    tests if a password that isn't in the file fails the test
+
+    Parameters
+    ----------
+    test_pw : string, optional
+        password to test. The default is twelve_char_password.
+    filen_name : string, optional
+        Name of the txt file in which all the passwords are stored. The
+        default is hacked_pw_filename.
+
+    Returns
+    -------
+    None.
+
+    """
+    check = pw.check_if_in_pw_database(test_pw, filen_name)
+    assert not check
 
 
 def test_all_checks_true(test_pw='1?aBcDeFgH'):

@@ -92,7 +92,9 @@ def digits(password):
             break
     return digits_check
 
+
 required_symbols = '~`!@#$%^&*()_-+={[}]|;<,>.?/'
+
 
 def symbols(password):
     """
@@ -223,3 +225,12 @@ def hacked_password(password):
     if password in cfg.hacked_passwords_list:
         hacked = True
     return hacked
+
+
+def check_if_in_pw_database(password, password_database_file_name):
+    password_database_file = open(password_database_file_name, 'r').readlines()
+    password_database_set = set(map(str.strip, password_database_file))
+    pw_in_set = False
+    if password in password_database_set:
+        pw_in_set = True
+    return pw_in_set
