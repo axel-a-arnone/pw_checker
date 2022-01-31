@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import config as cfg
 import math
 import random
+
 
 def min_length(password, minimum_length):
     """
@@ -132,7 +132,7 @@ def perform_checks(password,
                    digits_check=False,
                    symbols_check=False):
     """
-    performs requested checks 
+    performs requested checks
 
     Parameters
     ----------
@@ -177,7 +177,7 @@ def perform_checks(password,
         if not check:
             check_return = False
             break
-    
+
     return check_return
 
 
@@ -305,7 +305,7 @@ def password_generator(length_check=False,
     """
     pass_length = 12
     if length_check:
-        min_len = max(minimum_length, 4) #To allow one of each char type
+        min_len = max(minimum_length, 4)  # To allow one of each char type
         pass_length = min_len + random.randint(0, min_len)
     gen_lists = all_chartypes
     number_of_types = len(gen_lists)
@@ -339,7 +339,7 @@ def calculate_entropy(password):
 
     """
     password_length = len(password)
-    char_lists = cfg.all_chartypes
+    char_lists = all_chartypes
     char_counters = []
     for _ in char_lists:
         char_counters.append(0)
@@ -366,27 +366,6 @@ def calculate_entropy(password):
             pw_strength = pw_strength_levels[idx]
             break
     return pw_strength, expected_number_of_guesses
-
-
-def hacked_password(password):
-    """
-    Verifies if password is in database of hacked passwords
-
-    Parameters
-    ----------
-    password : string
-        password being tested.
-
-    Returns
-    -------
-    hacked: Bool
-        Boolean stating if selected password has already been hacked or not
-
-    """
-    hacked = False
-    if password in cfg.hacked_passwords_list:
-        hacked = True
-    return hacked
 
 
 def check_if_in_pw_database(password, password_database_file_name):
