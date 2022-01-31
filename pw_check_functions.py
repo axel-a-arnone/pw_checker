@@ -369,6 +369,22 @@ def calculate_entropy(password):
 
 
 def check_if_in_pw_database(password, password_database_file_name):
+    """
+    Checks if user password is in the selected password database
+
+    Parameters
+    ----------
+    password : string
+        password to check.
+    password_database_file_name : string
+        filename of the database.
+
+    Returns
+    -------
+    pw_in_set : Bool
+        True if the password is in the password database.
+
+    """
     password_database_file = open(password_database_file_name, 'r').readlines()
     password_database_set = set(map(str.strip, password_database_file))
     pw_in_set = False
