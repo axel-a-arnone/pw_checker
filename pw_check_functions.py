@@ -3,7 +3,7 @@ import config as cfg
 import math
 
 
-def min_length(password):
+def min_length(password, minimum_length):
     """
     Checks if password has minimum length, defined in config file
 
@@ -18,12 +18,10 @@ def min_length(password):
         True if: password is long enough, else: error string.
 
     """
-    min_length = cfg.minimum_length
-    min_length_msg = cfg.length_msg
-    if len(password) >= min_length:
+    if len(password) >= minimum_length:
         return True
     else:
-        return min_length_msg
+        return False
 
 
 def lower(password):
