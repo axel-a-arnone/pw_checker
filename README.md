@@ -19,7 +19,7 @@ Password Checker is a program that guides you through a password creation proces
 
 Download the full repository and save it in a folder.
 
----
+
 
 ## Usage and configuration
 
