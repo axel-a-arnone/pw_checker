@@ -4,23 +4,12 @@ import pw_check_functions as pw
 import config as cfg
 import random
 
-
-def generate_requirements_list():
-    """
-    Generates the list of requirements from config file
-
-    Returns
-    -------
-    selected_checks_msgs : List of strings
-        Each element is a password requirement.
-
-    """
-    checks_msgs_base = cfg.msg_list
-    selected_checks_msgs = []
-    for idx, check in enumerate(cfg.selected_checks):
-        if check:
-            selected_checks_msgs.append(checks_msgs_base[idx])
-    return selected_checks_msgs
+length_check = cfg.length_check
+minimum_length = cfg.minimum_length
+lowercase_check = cfg.lowercase_check
+uppercase_check = cfg.uppercase_check
+digits_check = cfg.digits_check
+symbols_check = cfg.symbols_check
 
 
 def password_generator():
